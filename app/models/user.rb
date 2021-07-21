@@ -6,5 +6,7 @@ class User < ApplicationRecord
 
   belongs_to :post_image, dependent: :destroy
   has_many :books, dependent: :destroy
+  
+  attachment :profile_image
 
 end
