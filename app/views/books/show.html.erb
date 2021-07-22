@@ -1,1 +1,9 @@
-<h1>Books</h1>
+ <%= render 'users/list', user: @books, users: @book %>
+ 
+ <h1>Book detail</h1>
+ <% @bookk.each do |book| %>
+ 
+<td><%= link_to book.title, book_path(book.id)%></td>
+            <td><%= book.body %></td>
+            
+<% end %>

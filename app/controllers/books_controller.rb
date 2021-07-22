@@ -13,7 +13,11 @@ class BooksController < ApplicationController
   end
   
   def show
-    
+    @books = current_user
+    # @books = Book.find(params[:id])
+    @book = Book.new
+    @bookk = Book.all
+    # @bookk = Book.find(params[:id])
   end
 
   def create
@@ -30,7 +34,7 @@ class BooksController < ApplicationController
   private
   
   def books_params
-    params.require(:user).permit(:name, :profile_image)
+    params.require(:user).permit(:name, :profile_image, :introduction)
   end
   
   # ストロングパラメータ
