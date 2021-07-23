@@ -1,9 +1,25 @@
- <%= render 'users/list', user: @books, users: @book %>
- 
- <h1>Book detail</h1>
- <% @bookk.each do |book| %>
- 
-<td><%= link_to book.title, book_path(book.id)%></td>
-            <td><%= book.body %></td>
-            
-<% end %>
+
+<div class="container">
+  <div class="row">
+       <%= render 'users/list', user: @books, users: @book %>
+    <div class="col-md-8 offset-md-1">
+  	  <h2>Book detail</h2>
+  	    <% @bookk.each do |book| %>
+  		<table class="table">
+  		  <tbody>
+  		    <tr>
+              <td>
+                <%= attachment_image_tag book.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", class: "attachment user profile_image fallback" %><br>
+                <%= link_to book.user, user_path(current_user.id)%>
+              </td>
+              <td><%= link_to book.title, book_path(book.id)%></td>
+              <td><%= book.body %></td>
+              <td><a class="btn btn-sm btn-success edit_book_6395">Edit</a></td>
+              <td><a data-confirm="本当に消しますか？" class="btn btn-sm btn-danger destroy_book_6395">Destroy</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <% end %>
+    </div>
+  </div>
+</div>

@@ -16,7 +16,7 @@ class BooksController < ApplicationController
     @books = current_user
     # @books = Book.find(params[:id])
     @book = Book.new
-    @bookk = Book.all
+    @bookk = Book.find(params[:id])
     # @bookk = Book.find(params[:id])
   end
 
@@ -28,18 +28,18 @@ class BooksController < ApplicationController
     book.save
     # ３. トップ画面へリダイレクト
     redirect_to book_path(book.id)
-    # redirect_to '/'
+    
   end
 
   private
   
-  def books_params
+  def book_params
     params.require(:user).permit(:name, :profile_image, :introduction)
   end
   
   # ストロングパラメータ
-  def book_params
-    params.require(:book).permit(:title, :body)
+  def books_params
+    params.permit(:title, :body)
   end
   
   def destroy

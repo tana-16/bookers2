@@ -1,1 +1,8 @@
 <%= render 'users/list', user: @user, users: @users%>
+
+<% @userss.each do |user| %>
+
+<%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", class: "attachment user profile_image fallback" %>
+<%= link_to user, book_path(book.id)%>
+<%= user.book.body %>
+<% end %>
