@@ -1,20 +1,15 @@
 class UsersController < ApplicationController
   def index
     @user = current_user
-    # @users = User.new
-    @users = Book.new
-    @userss = User.all
-
-    # @user = User.find(params[:id])
+    @book = Book.new
+    @users = User.all
 
   end
 
   def show
     @user = User.find(params[:id])
-    # @users = User.new
-    @users = Book.new
-    @book = @user.books
-    # @userss = User.all
+    @book = Book.new
+    @books = @user.books
   end
 
   def edit
@@ -22,16 +17,16 @@ class UsersController < ApplicationController
   end
 
   def update
-      @user = User.find(params[:id])
-      @user.update(user_params)
-      
-      if @user.save
-        flash[:success] = 'You have updated user successfully.'
-        redirect_to user_path(@user.id)
-      else
-        flash[:danger] = ''
-      end
-        
+    @user = User.find(params[:id])
+    @user.update(user_params)
+
+    if @user.save
+      flash[:success] = 'You have updated user successfully.'
+      redirect_to user_path(@user.id)
+    else
+      render :edit
+    end
+
   end
 
   private
@@ -39,7 +34,7 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)
   end
-  
+
 
 end
 

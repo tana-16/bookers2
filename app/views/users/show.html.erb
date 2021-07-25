@@ -1,9 +1,11 @@
 <main>
   <%= notice %>
+  <%= flash[:success] %>
+
   <div class="container px-5 px-sm-0">
   <div class="row">
 
-     <%= render 'users/list', user: @user, users: @users%>
+     <%= render 'users/list', user: @user, book: @book%>
 
 <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
@@ -17,7 +19,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @book.each do |book| %>
+          <% @books.each do |book| %>
          <tr>
            <td>
             <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", class: "attachment user profile_image fallback" %>

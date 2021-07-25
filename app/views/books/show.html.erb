@@ -1,12 +1,13 @@
-
-<div class="container">
-  <div class="row">
-       <%= render 'users/list', user: @user, users: @book %>
-    <div class="col-md-8 offset-md-1">
-  	  <h2>Book detail</h2>
-  		<table class="table">
-  		  <tbody>
-  		    <tr>
+<main>
+  <%= flash[:success] %>
+  <div class="container">
+    <div class="row">
+      <%= render 'users/list', user: @user, book: @book %>
+      <div class="col-md-8 offset-md-1">
+  	    <h2>Book detail</h2>
+  		  <table class="table">
+  		    <tbody>
+  		      <tr>
               <td>
                 <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg", class: "attachment user profile_image fallback" %><br>
                 <%= link_to @user.name, user_path(@user.id)%>
@@ -17,13 +18,12 @@
                 <td><%= link_to "Edit", edit_book_path(@books.id), class: "btn btn-sm btn-success" %></td>
               <% end %>
               <% if @user == current_user %>
-                <td><%= link_to "Destroy", book_path(@books.id), method: :delete, class: "btn btn-sm btn-danger destroy_book_6892" %></td>
+                <td><%= link_to "Destroy", book_path(@books.id), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-sm btn-danger destroy_book_6892" %></td>
               <% end %>
             </tr>
           </tbody>
         </table>
+      </div>
     </div>
   </div>
-</div>
-
-<t
+</main>
